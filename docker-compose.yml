@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  nginx:
+    container_name: nginx
+    image: momoirospanner/nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    volumes_from:
+      - phalcon
+    restart: always
+
+  phalcon:
+    container_name: phalcon
+    image: momoirospanner/phalcon-php
+    volumes:
+      - ./src:/var/www/html
+    restart: always
+
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER     : phalcon
+      POSTGRES_PASSWORD : phalcon
+    volumes:
+      - pgsql-db:/var/lib/postgresql/data
+
+volumes:
+  pgsql-db:
+    driver: local
