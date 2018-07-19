@@ -1,0 +1,16 @@
+# rootフォルダまでconfigファイルを検索しない
+root = true
+
+# ファイル設定
+[*]
+end_of_line = crlf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+charset = utf-8
+
+[!*.md]
+trim_trailing_whitespace = true
+
+[*.sh]
+end_of_line = lf
