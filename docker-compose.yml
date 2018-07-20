@@ -28,8 +28,8 @@ services:
       POSTGRES_USER     : phalcon
       POSTGRES_PASSWORD : phalcon
     volumes:
-      - pgsql-db:/var/lib/postgresql/data
+      - phalcon-db:/var/lib/postgresql/data
 
 volumes:
-  pgsql-db:
+  phalcon-db:
     driver: local
